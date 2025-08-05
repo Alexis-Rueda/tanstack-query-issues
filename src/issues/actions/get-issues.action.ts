@@ -15,6 +15,8 @@ export const getIssues = async (state: State, selectedLabels: string[]): Promise
     params.append('labels', selectedLabels.join(','));
   }
 
+  params.append('per_page', '5');
+
   const { data } = await githubApi.get<GithubIssue[]>('/issues', {
     params
   });
